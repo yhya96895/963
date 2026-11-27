@@ -1,0 +1,119 @@
+@keyframes bgShift { from { background-position: 0% 0%; } to { background-position: 100% 100%; } }
+@keyframes pulse { 0%, 100% { transform: scale(1); } 50% { transform: scale(1.06); } }
+@keyframes fadeUp { from { opacity: 0; transform: translateY(24px); } to { opacity: 1; transform: none; } }
+
+.overlay {
+  position: fixed;
+  inset: 0;
+  z-index: 60;
+  overflow: hidden;
+  background: rgba(30, 0, 40, 0.55);
+  transition: opacity 0.6s ease;
+}
+.overlay.leaving { opacity: 0; }
+
+.err-word {
+  position: absolute;
+  font-family: "Courier New", ui-monospace, monospace;
+  font-weight: 900;
+  line-height: 1;
+  white-space: nowrap;
+  pointer-events: none;
+  text-shadow: 0 0 14px currentColor;
+  animation: errIn 0.22s steps(3) both, glitch 0.5s steps(2) infinite 0.25s;
+}
+@keyframes errIn { from { opacity: 0; transform: scale(1.8); } to { opacity: 1; transform: scale(1); } }
+@keyframes glitch {
+  0% { transform: translate(0, 0); }
+  50% { transform: translate(2px, -2px); }
+  100% { transform: translate(-2px, 1px); }
+}
+
+.pistachio {
+  position: absolute;
+  pointer-events: none;
+  background: url("../assets/pistachio.svg") center / contain no-repeat;
+  filter: drop-shadow(0 4px 6px rgba(0, 0, 0, 0.35));
+  animation: pop 0.45s cubic-bezier(.2, 1.6, .4, 1) both;
+}
+@keyframes pop { from { opacity: 0; transform: scale(0) rotate(var(--rot)); } to { opacity: 1; transform: scale(1) rotate(var(--rot)); } }
+
+.pistachio-phrase {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: min(86%, 760px);
+  transform: translate(-50%, -50%);
+  padding: clamp(20px, 3vw, 36px);
+  border-radius: 28px;
+  background: rgba(59, 10, 92, 0.82);
+  border: 2px solid var(--pistachio);
+  box-shadow: 0 0 60px rgba(147, 197, 114, 0.6);
+  text-align: center;
+  font-family: "Amiri", serif;
+  font-weight: 700;
+  font-size: clamp(26px, 4.4vw, 52px);
+  line-height: 1.8;
+  white-space: pre-line;
+  z-index: 3;
+  animation: phraseIn 0.7s ease both;
+}
+@keyframes phraseIn { from { opacity: 0; transform: translate(-50%, -46%) scale(0.9); } to { opacity: 1; transform: translate(-50%, -50%) scale(1); } }
+
+.sweet {
+  position: fixed;
+  inset: 0;
+  z-index: 70;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 24px;
+  background: rgba(30, 0, 40, 0.5);
+  animation: fadeUp 0.4s ease both;
+}
+.sweet p {
+  max-width: 640px;
+  margin: 0;
+  padding: 32px;
+  border-radius: 28px;
+  background: linear-gradient(135deg, rgba(255, 77, 126, 0.9), rgba(142, 45, 226, 0.9));
+  box-shadow: 0 20px 60px rgba(0, 0, 0, 0.45);
+  text-align: center;
+  font-family: "Amiri", serif;
+  font-weight: 700;
+  font-size: clamp(24px, 3.6vw, 40px);
+  line-height: 1.9;
+  white-space: pre-line;
+}
+
+.hearts-layer {
+  position: fixed;
+  inset: 0;
+  z-index: 50;
+  overflow: hidden;
+  pointer-events: none;
+}
+
+.photo-heart {
+  position: absolute;
+  bottom: 0;
+  filter: drop-shadow(0 8px 18px rgba(224, 30, 79, 0.65));
+  will-change: transform, opacity;
+  animation: riseUp var(--rise) linear forwards;
+}
+.photo-heart .inner {
+  width: 100%;
+  height: 100%;
+  background-size: cover;
+  background-position: center;
+  -webkit-mask: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 29.6'><path d='M23.6 0c-3.4 0-6.3 2.7-7.6 5.6C14.7 2.7 11.8 0 8.4 0 3.8 0 0 3.8 0 8.4c0 9.4 9.5 11.9 16 21.2 6.1-9.3 16-12.1 16-21.2C32 3.8 28.2 0 23.6 0z'/></svg>") center / contain no-repeat;
+  mask: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 29.6'><path d='M23.6 0c-3.4 0-6.3 2.7-7.6 5.6C14.7 2.7 11.8 0 8.4 0 3.8 0 0 3.8 0 8.4c0 9.4 9.5 11.9 16 21.2 6.1-9.3 16-12.1 16-21.2C32 3.8 28.2 0 23.6 0z'/></svg>") center / contain no-repeat;
+  animation: sway var(--sway) ease-in-out infinite alternate;
+}
+@keyframes riseUp {
+  0% { transform: translateY(20%) scale(0.4); opacity: 0; }
+  12% { opacity: 1; transform: translateY(-10vh) scale(1); }
+  80% { opacity: 1; }
+  100% { transform: translateY(calc(-100vh - 100%)) scale(1.05); opacity: 0; }
+}
+@keyframes sway { from { transform: translateX(-26px) rotate(-6deg); } to { transform: translateX(26px) rotate(6deg); } }

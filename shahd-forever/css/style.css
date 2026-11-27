@@ -1,0 +1,127 @@
+@font-face { font-family: "Amiri"; src: url("../assets/fonts/Amiri-Regular.ttf"); font-weight: 400; font-display: swap; }
+@font-face { font-family: "Amiri"; src: url("../assets/fonts/Amiri-Bold.ttf"); font-weight: 700; font-display: swap; }
+@font-face { font-family: "Cairo"; src: url("../assets/fonts/Cairo-Regular.ttf"); font-weight: 400; font-display: swap; }
+@font-face { font-family: "Cairo"; src: url("../assets/fonts/Cairo-Bold.ttf"); font-weight: 700; font-display: swap; }
+
+:root {
+  --purple-deep: #3b0a5c;
+  --purple: #8e2de2;
+  --rose: #ff7aa8;
+  --pink: #ffb3d1;
+  --red: #e01e4f;
+  --pistachio: #93c572;
+}
+
+* { box-sizing: border-box; -webkit-tap-highlight-color: transparent; }
+
+html, body {
+  margin: 0;
+  height: 100%;
+  overflow: hidden;
+  font-family: "Cairo", system-ui, sans-serif;
+  color: #fff;
+  background: linear-gradient(135deg, #2a0745 0%, #5a1470 35%, #a01a63 70%, #e01e4f 100%);
+  background-size: 200% 200%;
+  animation: bgShift 18s ease-in-out infinite alternate;
+  -webkit-user-select: none;
+  user-select: none;
+  touch-action: manipulation;
+}
+
+#bg-hearts {
+  position: fixed;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  z-index: 0;
+  pointer-events: none;
+}
+
+#app {
+  position: relative;
+  z-index: 2;
+  height: 100vh;
+  height: 100dvh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: max(16px, env(safe-area-inset-top)) 16px max(16px, env(safe-area-inset-bottom));
+}
+
+.card {
+  width: min(760px, 100%);
+  max-height: 100%;
+  overflow: auto;
+  padding: clamp(22px, 4vw, 44px);
+  border-radius: 32px;
+  background: linear-gradient(160deg, rgba(255, 255, 255, 0.2), rgba(255, 255, 255, 0.07));
+  border: 1px solid rgba(255, 255, 255, 0.35);
+  box-shadow: 0 20px 60px rgba(30, 0, 50, 0.45), inset 0 0 40px rgba(255, 179, 209, 0.12);
+  -webkit-backdrop-filter: blur(14px);
+  backdrop-filter: blur(14px);
+  text-align: center;
+  transition: opacity 0.6s ease, transform 0.6s ease;
+}
+
+.card.fading { opacity: 0; transform: scale(0.96) translateY(10px); }
+
+.message {
+  margin: 0 0 clamp(22px, 4vw, 36px);
+  font-family: "Amiri", serif;
+  font-weight: 700;
+  font-size: clamp(24px, 3.6vw, 40px);
+  line-height: 1.9;
+  white-space: pre-line;
+  text-shadow: 0 2px 18px rgba(224, 30, 79, 0.55);
+}
+
+.buttons {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 14px;
+}
+
+.slot { display: flex; }
+
+.btn {
+  flex: 1;
+  min-height: 58px;
+  padding: 12px 18px;
+  font-family: "Cairo", sans-serif;
+  font-weight: 700;
+  font-size: clamp(17px, 2.2vw, 22px);
+  color: #fff;
+  border: 0;
+  border-radius: 999px;
+  cursor: pointer;
+  transition: transform 0.15s ease, box-shadow 0.2s ease, left 0.28s cubic-bezier(.2,.9,.3,1.2), top 0.28s cubic-bezier(.2,.9,.3,1.2);
+  box-shadow: 0 8px 22px rgba(0, 0, 0, 0.3);
+}
+
+.btn:active { transform: scale(0.96); }
+
+.btn-yes {
+  background: linear-gradient(135deg, #ff4d7e, #e01e4f);
+  animation: pulse 1.8s ease-in-out infinite;
+}
+.btn-yes::before { content: "♥ "; }
+
+.btn-no { background: linear-gradient(135deg, #8e2de2, #5b1a9e); }
+
+.btn-alt { background: linear-gradient(135deg, #ff7aa8, #b45cff); }
+
+.btn.dodging {
+  position: fixed;
+  z-index: 40;
+  margin: 0;
+  flex: none;
+}
+
+.hidden { display: none !important; }
+
+.final .message { margin: 0; font-size: clamp(26px, 4vw, 46px); }
+.final { animation: fadeUp 1.2s ease both; }
+
+@media (max-width: 520px) {
+  .buttons { grid-template-columns: 1fr; }
+}

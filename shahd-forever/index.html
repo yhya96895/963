@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover, user-scalable=no" />
+  <meta name="apple-mobile-web-app-capable" content="yes" />
+  <meta name="theme-color" content="#3b0a5c" />
+  <title>لشهد ♥</title>
+  <link rel="stylesheet" href="css/style.css" />
+  <link rel="stylesheet" href="css/animations.css" />
+</head>
+<body>
+  <canvas id="bg-hearts" aria-hidden="true"></canvas>
+
+  <main id="app">
+    <section id="card" class="card" aria-live="polite">
+      <p id="message" class="message"></p>
+      <div id="buttons" class="buttons">
+        <div class="slot" data-slot="yes"><button class="btn btn-yes" data-action="yes" type="button"></button></div>
+        <div class="slot" data-slot="no"><button class="btn btn-no" data-action="no" type="button"></button></div>
+        <div class="slot" data-slot="option3"><button class="btn btn-alt" data-action="option3" type="button"></button></div>
+        <div class="slot" data-slot="option4"><button class="btn btn-alt" data-action="option4" type="button"></button></div>
+      </div>
+    </section>
+
+    <section id="final" class="card final hidden">
+      <p id="final-message" class="message"></p>
+    </section>
+  </main>
+
+  <div id="overlay" class="overlay hidden"></div>
+  <div id="sweet" class="sweet hidden" role="dialog"><p id="sweet-text"></p></div>
+  <div id="hearts-layer" class="hearts-layer" aria-hidden="true"></div>
+
+  <script src="js/config.js"></script>
+  <script src="js/background.js"></script>
+  <script src="js/dodge.js"></script>
+  <script src="js/animations.js"></script>
+  <script src="js/celebration.js"></script>  <script src="js/main.js"></script>
+</body>
+</html>
