@@ -43,9 +43,9 @@ window.CONFIG = {
 
   song: {
     src: "assets/audio/song.mp3",
-    startAt: 0,
+    startAt: 54,
     volume: 0.9,
-    loop: true,
+    loop: false,
   },
 
   timings: {
